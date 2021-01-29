@@ -46,7 +46,7 @@
 
     function uploadFile(deviceImei, fileName) {
         var file = document.getElementById("cameraImg").files[0];
-        console.log(file.size);
+        console.log("filesize: " + file.size);
         fileName = file.name;
         $.ajax({
             url: 'https://gps-dev.idynamics.ch/addDocument.php?id=' + getUrlParam("id", "") + '&key=' + getUrlParam("key", "") + '&document_name=' + fileName + '&imei=' + deviceImei,

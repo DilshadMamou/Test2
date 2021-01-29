@@ -44,7 +44,7 @@
         var file = document.getElementById("cameraImg").files[0];
                  $.ajax({
                 ///url: 'https://gps-dev.idynamics.ch/addDocument.php?id=idynamics&key=da5c9131fb3d39e66ad969bfe512f4dcf5f676ba&document_name=' + fileName + '&imei=' + deviceImei,
-                 url: 'https://gps-dev.idynamics.ch/addDocument.php?id=' + getUrlParam("id", "") + '&key=' + getUrlParam("key", "") + '&document_name=' + fileName + '&imei=' + deviceImei,
+                 url: 'https://gps-dev.idynamics.ch/addDocument.php?id=' + getUrlParam("id", "") + '&key=' + getUrlParam("key", "") + '&document_name=' + fileName.name + '&imei=' + deviceImei,
                 type: "post",
                 data: file,
                 dataType: 'binary',
@@ -70,13 +70,13 @@
                     console.log("result");
                     console.log(result);
                     alert("result");
-                    alert(result);
+                    alert(result.toString());
                 },
                 error: function (error) {
                     console.log("error");
                     console.log(error);
                     alert("error");
-                    alert(error);
+                    alert(error.toString());
                 }
             });
     }

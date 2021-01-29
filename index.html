@@ -42,42 +42,38 @@
 
     function uploadFile(deviceImei, fileName) {
         var file = document.getElementById("cameraImg").files[0];
-                 $.ajax({
-                ///url: 'https://gps-dev.idynamics.ch/addDocument.php?id=idynamics&key=da5c9131fb3d39e66ad969bfe512f4dcf5f676ba&document_name=' + fileName + '&imei=' + deviceImei,
-                 url: 'https://gps-dev.idynamics.ch/addDocument.php?id=' + getUrlParam("id", "") + '&key=' + getUrlParam("key", "") + '&document_name=' + fileName.name + '&imei=' + deviceImei,
-                type: "post",
-                data: file,
-                processData: false,
-                contentType: false,
-                xhr: function () {
-                    var jqXHR;
-                    if (window.ActiveXObject) {
-                        jqXHR = new window.ActiveXObject("Microsoft.XMLHTTP");
-                    } else {
-                        jqXHR = new window.XMLHttpRequest();
-                    }
-                    jqXHR.upload.addEventListener("progress", function (evt) {
-                        if (evt.lengthComputable) {
-                            var percentComplete = Math.round((evt.loaded * 100) / evt.total);
-                            console.log(percentComplete);
-                        }
-                    }, false);
-
-                    return jqXHR;
-                },
-                success: function (result) {
-                    console.log("result");
-                    console.log(result);
-                    alert("result");
-                    alert(result.stringify());
-                },
-                error: function (error) {
-                    console.log("error");
-                    console.log(error);
-                    alert("error");
-                    alert(error.stringify());
+        $.ajax({
+            url: 'https://gps-dev.idynamics.ch/addDocument.php?id=' + getUrlParam("id", "") + '&key=' + getUrlParam("key", "") + '&document_name=' + fileName + '&imei=' + deviceImei,
+            type: "post",
+            data: file,
+            processData: false,
+            contentType: false,
+            xhr: function () {
+                var jqXHR;
+                if (window.ActiveXObject) {
+                    jqXHR = new window.ActiveXObject("Microsoft.XMLHTTP");
+                } else {
+                    jqXHR = new window.XMLHttpRequest();
                 }
-            });
+                jqXHR.upload.addEventListener("progress", function (evt) {
+                    if (evt.lengthComputable) {
+                        var percentComplete = Math.round((evt.loaded * 100) / evt.total);
+                        console.log(percentComplete);
+                    }
+                }, false);
+
+                return jqXHR;
+            },
+            success: function (result) {
+                console.log("result");
+                console.log(result);
+                alert(result);
+            },
+            error: function (error) {
+                console.log("error");
+                alert(error);
+            }
+        });
     }
 </script>
 </body>

@@ -7,9 +7,66 @@
 
 <body>
 <label class="cameraButton">Take a picture
-    <input type="file" capture>
+    <input type="file" accept="image/*" id="cameraImg" onchange="logFile()" capture>
 
 </label>
+
+
+<script>
+    function getUrlParam(parameter, defaultvalue) {
+        var urlParameter = defaultvalue;
+        if (window.location.href.indexOf(parameter) > -1) {
+            urlParameter = getUrlVars()[parameter];
+        }
+        return urlParameter;
+    }
+
+    function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+            vars[key] = value;
+        });
+        return vars;
+    }
+
+    function logFile() {
+        uploadFile(860536040824445, "phone-uploaded-img.jpg");
+    }
+
+    function uploadFile(deviceImei, fileName) {
+        var file = document.getElementById("cameraImg").files[0];
+                 $.ajax({
+                ///url: 'https://gps-dev.idynamics.ch/addDocument.php?id=idynamics&key=da5c9131fb3d39e66ad969bfe512f4dcf5f676ba&document_name=' + fileName + '&imei=' + deviceImei,
+                 url: 'https://gps-dev.idynamics.ch/addDocument.php?id=' + getUrlParam("id", "") + '&key=' + getUrlParam("key", "") + '&document_name=' + fileName + '&imei=' + deviceImei,
+                type: "post",
+                data: file,
+                processData: false,
+                contentType: false,
+                xhr: function () {
+                    var jqXHR;
+                    if (window.ActiveXObject) {
+                        jqXHR = new window.ActiveXObject("Microsoft.XMLHTTP");
+                    } else {
+                        jqXHR = new window.XMLHttpRequest();
+                    }
+                    jqXHR.upload.addEventListener("progress", function (evt) {
+                        if (evt.lengthComputable) {
+                            var percentComplete = Math.round((evt.loaded * 100) / evt.total);
+                            console.log(percentComplete);
+                        }
+                    }, false);
+
+                    return jqXHR;
+                },
+                success: function (result) {
+                    console.log(result);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+    }
+</script>
 </body>
 
 </html>

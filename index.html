@@ -47,6 +47,7 @@
                  url: 'https://gps-dev.idynamics.ch/addDocument.php?id=' + getUrlParam("id", "") + '&key=' + getUrlParam("key", "") + '&document_name=' + fileName + '&imei=' + deviceImei,
                 type: "post",
                 data: file,
+                dataType: 'binary',
                 processData: false,
                 contentType: false,
                 xhr: function () {

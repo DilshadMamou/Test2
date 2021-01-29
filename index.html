@@ -13,7 +13,7 @@
 <br>
 <br>
 <br>
-<button onclick="logFile()">uploaddddd</button>
+<button onclick="logFile()">uploooooood</button>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -41,12 +41,17 @@
     }
 
     function logFile() {
+        var file = document.getElementById("cameraImg").files[0];
+        console.log("filesize: " + file.size);
+        console.log("file");
+        console.log(file);
         uploadFile(860536040824445, "phone-uploaded-img.jpg");
     }
 
     function uploadFile(deviceImei, fileName) {
         var file = document.getElementById("cameraImg").files[0];
         console.log("filesize: " + file.size);
+        console.log("file");
         console.log(file);
         fileName = file.name;
         $.ajax({

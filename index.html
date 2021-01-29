@@ -6,7 +6,7 @@
 </head>
 
 <body>
-<label class="cameraButton">Take a picture
+<label class="cameraButton">Take a picturee
     <input type="file" accept="image/*" id="cameraImg" onchange="logFile()" capture>
 
 </label>
@@ -66,9 +66,11 @@
                     return jqXHR;
                 },
                 success: function (result) {
+                    console.log("result");
                     console.log(result);
                 },
                 error: function (error) {
+                    console.log("error");
                     console.log(error);
                 }
             });

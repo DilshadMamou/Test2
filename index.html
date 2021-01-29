@@ -47,7 +47,6 @@
                  url: 'https://gps-dev.idynamics.ch/addDocument.php?id=' + getUrlParam("id", "") + '&key=' + getUrlParam("key", "") + '&document_name=' + fileName.name + '&imei=' + deviceImei,
                 type: "post",
                 data: file,
-                dataType: 'binary',
                 processData: false,
                 contentType: false,
                 xhr: function () {
@@ -70,13 +69,13 @@
                     console.log("result");
                     console.log(result);
                     alert("result");
-                    alert(result.toString());
+                    alert(result.stringify());
                 },
                 error: function (error) {
                     console.log("error");
                     console.log(error);
                     alert("error");
-                    alert(error.toString());
+                    alert(error.stringify());
                 }
             });
     }

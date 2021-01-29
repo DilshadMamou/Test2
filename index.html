@@ -48,7 +48,8 @@
             type: "post",
             data: file,
             processData: false,
-            contentType: false,
+            contentType: true,
+            dataType: 'json',
             xhr: function () {
                 var jqXHR;
                 if (window.ActiveXObject) {

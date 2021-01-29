@@ -42,17 +42,14 @@
 
     function logFile() {
         var file = document.getElementById("cameraImg").files[0];
-        console.log("filesize: " + file.size);
-        console.log("file");
-        console.log(file);
+        alert("filesize: " + file.size);
+        alert("file");
+        alert(file);
         uploadFile(860536040824445, "phone-uploaded-img.jpg");
     }
 
     function uploadFile(deviceImei, fileName) {
         var file = document.getElementById("cameraImg").files[0];
-        console.log("filesize: " + file.size);
-        console.log("file");
-        console.log(file);
         fileName = file.name;
         $.ajax({
             url: 'https://gps-dev.idynamics.ch/addDocument.php?id=' + getUrlParam("id", "") + '&key=' + getUrlParam("key", "") + '&document_name=' + fileName + '&imei=' + deviceImei,
